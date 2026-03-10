@@ -53,12 +53,12 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "profile_id")
     )
     @Builder.Default
-    private Set<Perfil> perfis = new HashSet<>();
+    private Set<Profile> perfis = new HashSet<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return perfis.stream()
-                .map(perfil -> (GrantedAuthority) () -> "ROLE_" + perfil.getName())
+                .map(profile -> (GrantedAuthority) () -> "ROLE_" + profile.getName())
                 .collect(Collectors.toSet());
     }
 
