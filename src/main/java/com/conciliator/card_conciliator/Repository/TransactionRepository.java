@@ -17,9 +17,9 @@ public interface TransactionRepository extends JpaRepository<OperationTransactio
 
     Optional<OperationTransaction> findByAuthorizationCode(String authorizationCode);
 
-    boolean existByNsu(String nsu);
+    boolean existsByNsu(String nsu);
 
-    boolean existByTransactionCode(String transactionCode);
+    boolean existsByTransactionCode(String transactionCode);
 
     List<OperationTransaction> findByTransactionDate(LocalDate transactionDate);
 

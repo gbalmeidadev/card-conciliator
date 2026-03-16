@@ -14,9 +14,9 @@ public interface EnterpriseRepository extends JpaRepository<Enterprise, Long> {
 
     Optional<Enterprise> findByCnpj(String cnpj);
 
-    boolean existByCnpj(String cnpj);
+    boolean existsByCnpj(String cnpj);
 
-    List<Enterprise> findBYActiveTrue();
+    List<Enterprise> findByActiveTrue();
 
     List<Enterprise> findByFantasyNameContainingIgnoreCase (String fantasyName);
 

@@ -24,7 +24,7 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
 
     Optional<Sale> findByNsu(String nsu);
 
-    boolean existBySaleCode(String saleCode);
+    boolean existsBySaleCode(String saleCode);
 
     List<Sale> findByEnterpriseIdAndStatus(long enterpriseId, SaleStatus status);
 }

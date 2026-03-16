@@ -26,10 +26,11 @@ public interface ChargebackRepository extends JpaRepository<Chargeback, Long> {
 
     List<Chargeback> findByChargebackDate(LocalDate chargebackDate);
 
-    List<Chargeback> findByEnterpriseIdAndChargebackDate(
+    List<Chargeback> findByEnterpriseIdAndChargebackDateBetween(
             Long enterpriseId,
             LocalDate startDate,
-            LocalDate endDate);
+            LocalDate endDate
+    );
 
     List<Chargeback> findByReasonCode(String reasonCode);
 }
