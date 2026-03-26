@@ -1,7 +1,7 @@
 package com.conciliator.card_conciliator.exception;
 
 public class UserNotFoundException extends RuntimeException {
-    public UserNotFoundException(Long id) {
+    public UserNotFoundException(String id) {
         super("Usuário não encontrado com ID: " + id);
     }
 }
