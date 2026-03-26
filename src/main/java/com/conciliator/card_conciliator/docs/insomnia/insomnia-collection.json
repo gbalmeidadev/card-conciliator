@@ -1,0 +1,46 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: card-conciliator
+
+collection:
+- name: Create User
+method: POST
+url: "{{ base_url }}/users"
+headers:
+- name: Content-Type
+value: application/json
+body:
+mimeType: application/json
+text: |
+{
+"email": "admin@email.com",
+"password": "123456",
+"enterpriseId": 1
+}
+
+- name: Login
+method: POST
+url: "{{ base_url }}/auth/login"
+headers:
+- name: Content-Type
+value: application/json
+body:
+mimeType: application/json
+text: |
+{
+"email": "admin@email.com",
+"password": "123456"
+}
+
+- name: Get Users (Protected)
+method: GET
+url: "{{ base_url }}/users"
+headers:
+- name: Authorization
+value: Bearer {{ token }}
+
+environments:
+name: Base Environment
+data:
+base_url: http://localhost:8080
+token: ""
