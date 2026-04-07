@@ -1,46 +1,124 @@
 type: collection.insomnia.rest/5.0
 schema_version: "5.1"
 name: card-conciliator
-
+meta:
+  id: wrk_a9e88201e94d463d83efcac7cb828267
+  created: 1774558551183
+  modified: 1774560478905
+  description: ""
 collection:
-- name: Create User
-method: POST
-url: "{{ base_url }}/users"
-headers:
-- name: Content-Type
-value: application/json
-body:
-mimeType: application/json
-text: |
-{
-"email": "admin@email.com",
-"password": "123456",
-"enterpriseId": 1
-}
-
-- name: Login
-method: POST
-url: "{{ base_url }}/auth/login"
-headers:
-- name: Content-Type
-value: application/json
-body:
-mimeType: application/json
-text: |
-{
-"email": "admin@email.com",
-"password": "123456"
-}
-
-- name: Get Users (Protected)
-method: GET
-url: "{{ base_url }}/users"
-headers:
-- name: Authorization
-value: Bearer {{ token }}
-
+  - url: http://localhost:8080/users
+    name: Create User
+    meta:
+      id: req_7baf4b48c5cf4ff6a6a2b8fe4177e09b
+      created: 1774558551206
+      modified: 1775517946810
+      isPrivate: false
+      description: ""
+      sortKey: -1774558551206
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "user@email.com",
+          "password": "123456",
+          "enterpriseId": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.4.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/auth/login
+    name: Generate Token/Login
+    meta:
+      id: req_75ea22847aef4601a3fd1832b8140080
+      created: 1774558856423
+      modified: 1775519474769
+      isPrivate: false
+      description: ""
+      sortKey: -1774558856423
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "email": "admin@email.com",
+          "password": "123456"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/12.4.0
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: http://localhost:8080/users
+    name: Endpoint
+    meta:
+      id: req_42aa31d7cbbb4d79a10ead188fc3578c
+      created: 1774559644327
+      modified: 1775519484394
+      isPrivate: false
+      description: ""
+      sortKey: -1774559644327
+    method: GET
+    body:
+      mimeType: multipart/form-data
+    headers:
+      - name: Content-Type
+        value: multipart/form-data
+      - name: Authorization
+        value: Bearer
+          eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBlbWFpbC5jb20iLCJpYXQiOjE3NzU1MTk0NzYsImV4cCI6MTc3NTUyMzA3Nn0.IWKrr8rTy_Uyhahby0fCHxGekmIIUF4hBOitBTLoTIM
+        description: ""
+        disabled: false
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_7be197db507d1a102788b0a15cf3ae4c52ea8ddf
+    created: 1774558551191
+    modified: 1775518697294
+  cookies:
+    - id: b7cf1da5-f92e-469f-a45e-0a4ca6bfffb8
+      key: JSESSIONID
+      value: 09B0082B9CE87DE6D5DDBE1FB36318BF
+      domain: localhost
+      path: /
+      secure: false
+      httpOnly: true
+      hostOnly: true
 environments:
-name: Base Environment
-data:
-base_url: http://localhost:8080
-token: ""
+  name: Base Environment
+  meta:
+    id: env_7be197db507d1a102788b0a15cf3ae4c52ea8ddf
+    created: 1774558551187
+    modified: 1774558551187
+    isPrivate: false
