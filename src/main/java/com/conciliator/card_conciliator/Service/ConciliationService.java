@@ -99,6 +99,14 @@ public class ConciliationService {
                 .toList();
     }
 
+    public List<ConciliationResponseDTO> findByEnterprise(Long enterpriseId) {
+        return conciliationRepository.findAll()
+                .stream()
+                .filter(c -> c.getEnterprise().getId().equals(enterpriseId))
+                .map(ConciliationMapper::toResponse)
+                .toList();
+    }
+
     private BigDecimal calculateExpectedAmount(Sale sale, Installment installment) {
 
         BigDecimal gross = installment.getInstallmentAmount();
